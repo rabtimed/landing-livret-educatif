@@ -546,3 +546,106 @@ footer a {
     0%, 100% { transform: translateY(0); }
     50% { transform: translateY(-5px); }
 }
+
+/* Support RTL (Arabe) */
+body {
+    font-family: 'Cairo', 'Tajawal', sans-serif;
+    direction: rtl;
+    text-align: right;
+}
+
+/* Ajustements pour RTL */
+.hero-buttons {
+    direction: rtl;
+}
+
+.btn-primary, .btn-secondary {
+    flex-direction: row-reverse;
+}
+
+.trust-banner {
+    direction: rtl;
+}
+
+.benefits-grid {
+    direction: rtl;
+}
+
+.universe-content {
+    direction: rtl;
+}
+
+.universe-text ul {
+    padding-right: 20px;
+}
+
+/* Section livret (nouvelle) */
+.livret-section {
+    padding: 60px 0;
+    background: linear-gradient(135deg, #FFF5E6 0%, #FFFFFF 100%);
+}
+
+.livret-card {
+    background: white;
+    border-radius: var(--border-radius);
+    padding: 48px;
+    text-align: center;
+    box-shadow: var(--shadow-lg);
+}
+
+.livret-features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: center;
+    margin: 32px 0;
+}
+
+.livret-features span {
+    background: #f0f0ff;
+    padding: 10px 20px;
+    border-radius: 40px;
+    font-weight: 500;
+}
+
+.livret-badge {
+    background: var(--primary);
+    color: white;
+    display: inline-block;
+    padding: 12px 24px;
+    border-radius: 40px;
+    font-weight: 700;
+    margin-top: 24px;
+}
+
+/* Ajustements responsive RTL */
+@media (max-width: 768px) {
+    .hero .container {
+        text-align: center;
+    }
+    
+    .trust-banner {
+        justify-content: center;
+    }
+    
+    .livret-features {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+/* Animation pour le nouveau contenu */
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.livret-card {
+    animation: slideInRight 0.8s ease;
+}

@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450">
+  <defs>
+    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#7B4BFF;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#2DD4BF;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="grad2" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFC107;stop-opacity:0.3" />
+      <stop offset="100%" style="stop-color:#FF6B6B;stop-opacity:0.1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="800" height="450" fill="url(#grad1)" rx="16"/>
+  <rect width="800" height="450" fill="url(#grad2)" rx="16"/>
+  
+  <!-- Pattern éducatif -->
+  <g opacity="0.15">
+    <text x="50" y="80" font-size="40" font-family="Arial">📚</text>
+    <text x="200" y="150" font-size="35" font-family="Arial">⭐</text>
+    <text x="600" y="100" font-size="45" font-family="Arial">🎨</text>
+    <text x="700" y="350" font-size="38" font-family="Arial">📖</text>
+    <text x="100" y="380" font-size="42" font-family="Arial">✏️</text>
+    <text x="500" y="400" font-size="36" font-family="Arial">🎓</text>
+    <text x="350" y="70" font-size="30" font-family="Arial">🧠</text>
+    <text x="680" y="220" font-size="34" font-family="Arial">🎵</text>
+  </g>
+  
+  <!-- Cercle central pour play-button -->
+  <circle cx="400" cy="225" r="80" fill="#FFFFFF" opacity="0.95"/>
+  <circle cx="400" cy="225" r="75" fill="#7B4BFF"/>
+  <circle cx="400" cy="225" r="70" fill="none" stroke="#FFFFFF" stroke-width="3"/>
+  
+  <!-- Triangle play -->
+  <polygon points="375,190 375,260 440,225" fill="#FFFFFF"/>
+  
+  <!-- Texte -->
+  <text x="400" y="380" text-anchor="middle" font-family="Cairo, Arial" font-size="28" fill="#FFFFFF" font-weight="bold">
+    شاهد التطبيق في العمل
+  </text>
+  
+  <text x="400" y="415" text-anchor="middle" font-family="Cairo, Arial" font-size="16" fill="#FFFFFF" opacity="0.9">
+    اضغط للمشاهدة
+  </text>
+  
+  <!-- Éléments flottants -->
+  <g opacity="0.3">
+    <circle cx="150" cy="120" r="4" fill="#FFFFFF">
+      <animate attributeName="cy" values="120;110;120" dur="3s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="650" cy="300" r="3" fill="#FFFFFF">
+      <animate attributeName="cy" values="300;290;300" dur="2.5s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="300" cy="400" r="5" fill="#FFFFFF">
+      <animate attributeName="cy" values="400;388;400" dur="4s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="550" cy="80" r="3.5" fill="#FFFFFF">
+      <animate attributeName="cy" values="80;72;80" dur="3.2s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+</svg>
