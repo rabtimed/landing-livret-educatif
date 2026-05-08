@@ -1,4 +1,4 @@
-// video-controller.js - Son activé par défaut, bouton تخطي en haut à gauche
+// video-controller.js - sans overlay manuel, lecture au clic si autoplay bloqué
 
 const video = document.getElementById('introVideo');
 const videoContainer = document.getElementById('videoContainer');
@@ -9,9 +9,11 @@ const currentTimeSpan = document.getElementById('currentTime');
 const durationSpan = document.getElementById('duration');
 const videoUI = document.getElementById('videoUI');
 
-let isMuted = false;   // son activé
+let isMuted = false;      // son activé par défaut
 let hasEnded = false;
+let clickHandlerAttached = false;
 
+// Initialisation
 document.addEventListener('DOMContentLoaded', () => {
     initVideo();
     setupEventListeners();
@@ -19,9 +21,10 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function initVideo() {
-    video.muted = false;   // forcer son activé
-    if (soundBtn) soundBtn.innerHTML = '🔊';
-    
+    // Désactiver le mute pour avoir du son par défaut
+    video.muted = false;
+    if (soundBtn) soundBtn.innerHTML = '🔊';  // icône son activé
+
     video.addEventListener('loadedmetadata', () => {
         updateDuration();
         hideLoading();
@@ -32,6 +35,7 @@ function initVideo() {
     video.addEventListener('canplay', () => hideLoading());
     video.addEventListener('play', () => console.log('Video playing'));
     video.addEventListener('pause', () => console.log('Video paused'));
+
     attemptAutoplay();
 }
 
@@ -39,33 +43,33 @@ function attemptAutoplay() {
     const playPromise = video.play();
     if (playPromise !== undefined) {
         playPromise.then(() => {
-            console.log('Autoplay successful');
+            console.log('Autoplay réussi');
             hideLoading();
         }).catch(error => {
-            console.log('Autoplay failed:', error);
-            showManualPlayButton();
+            console.log('Autoplay bloqué par le navigateur:', error);
+            enableClickToPlay();
         });
     }
 }
 
-function showManualPlayButton() {
-    const playOverlay = document.createElement('div');
-    playOverlay.className = 'manual-play-overlay';
-    playOverlay.innerHTML = `
-        <div class="manual-play-btn">
-            <div style="font-size: 60px;">▶️</div>
-            <p>اضغط لتشغيل الفيديو</p>
-        </div>
-    `;
-    playOverlay.onclick = () => {
-        video.play();
-        playOverlay.remove();
+// Pas d'overlay graphique : on écoute le clic sur le conteneur vidéo
+function enableClickToPlay() {
+    if (clickHandlerAttached) return;
+    clickHandlerAttached = true;
+
+    const playOnClick = () => {
+        video.play().then(() => {
+            console.log('Lecture démarrée après clic utilisateur');
+            videoContainer.removeEventListener('click', playOnClick);
+            clickHandlerAttached = false;
+        }).catch(e => console.log('Échec lecture après clic', e));
     };
-    videoContainer.appendChild(playOverlay);
+    videoContainer.addEventListener('click', playOnClick);
 }
 
 function setupEventListeners() {
     if (soundBtn) soundBtn.addEventListener('click', toggleSound);
+
     const progressContainer = document.querySelector('.progress-bar-container');
     if (progressContainer) {
         progressContainer.addEventListener('click', (e) => {
@@ -74,17 +78,28 @@ function setupEventListeners() {
             video.currentTime = pos * video.duration;
         });
     }
+
+    // Affichage temporaire de l'UI au toucher sur mobile
     let touchTimer;
-    videoContainer.addEventListener('touchstart', () => {
-        if (videoUI) {
-            videoUI.classList.add('active');
-            clearTimeout(touchTimer);
-            touchTimer = setTimeout(() => videoUI.classList.remove('active'), 3000);
-        }
-    });
+    if (videoContainer) {
+        videoContainer.addEventListener('touchstart', () => {
+            if (videoUI) {
+                videoUI.classList.add('active');
+                clearTimeout(touchTimer);
+                touchTimer = setTimeout(() => {
+                    if (videoUI) videoUI.classList.remove('active');
+                }, 3000);
+            }
+        });
+    }
+
+    // Gestion de la visibilité de la page (mise en pause si onglet caché)
     document.addEventListener('visibilitychange', () => {
-        if (document.hidden) video.pause();
-        else if (!hasEnded) video.play().catch(e => console.log('Resume failed'));
+        if (document.hidden) {
+            video.pause();
+        } else if (!hasEnded) {
+            video.play().catch(e => console.log('Reprise après retour onglet impossible', e));
+        }
     });
 }
 
@@ -94,7 +109,9 @@ function toggleSound() {
     if (soundBtn) {
         soundBtn.innerHTML = isMuted ? '🔇' : '🔊';
         soundBtn.style.transform = 'scale(1.2)';
-        setTimeout(() => { if (soundBtn) soundBtn.style.transform = 'scale(1)'; }, 200);
+        setTimeout(() => {
+            if (soundBtn) soundBtn.style.transform = 'scale(1)';
+        }, 200);
     }
 }
 
@@ -120,38 +137,49 @@ function formatTime(seconds) {
 function hideLoading() {
     if (loadingOverlay) {
         loadingOverlay.style.opacity = '0';
-        setTimeout(() => loadingOverlay.style.display = 'none', 500);
+        setTimeout(() => {
+            if (loadingOverlay) loadingOverlay.style.display = 'none';
+        }, 500);
     }
 }
 
 function showUI() {
     if (videoUI) {
         videoUI.classList.add('active');
-        setTimeout(() => videoUI.classList.remove('active'), 3000);
+        setTimeout(() => {
+            if (videoUI) videoUI.classList.remove('active');
+        }, 3000);
     }
 }
 
 function onVideoEnd() {
     if (hasEnded) return;
     hasEnded = true;
-    console.log('Video ended – redirect');
+    console.log('Fin de la vidéo – redirection vers main-content');
     if (videoContainer) videoContainer.classList.add('exit-transition');
-    setTimeout(() => window.location.href = 'main-content.html', 800);
+    setTimeout(() => {
+        window.location.href = 'main-content.html';
+    }, 800);
 }
 
-function skipVideo() {
+// Fonction globale pour le bouton "تخطي" (référencée dans intro-video.html)
+window.skipVideo = function() {
     if (hasEnded) return;
     hasEnded = true;
-    console.log('User skipped');
+    console.log('Utilisateur a cliqué sur تخطي');
     if (video) video.pause();
     if (videoContainer) videoContainer.classList.add('exit-transition');
-    setTimeout(() => window.location.href = 'main-content.html', 800);
-}
+    setTimeout(() => {
+        window.location.href = 'main-content.html';
+    }, 800);
+};
+
+// Fonction globale pour le bouton du son (si appelé directement dans le HTML)
+window.toggleSound = toggleSound;
 
 function checkAutoplaySupport() {
     const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
-    if (isMobile) console.log('Mobile device detected – autoplay may need user gesture');
+    if (isMobile) {
+        console.log('Appareil mobile détecté – autoplay avec son souvent bloqué, clic requis');
+    }
 }
-
-window.toggleSound = toggleSound;
-window.skipVideo = skipVideo;
