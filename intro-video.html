@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no">
+    <title>أنا أبدع في مدرستي - فيلم تعريفي</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/video-intro.css">
+</head>
+<body>
+    <!-- Overlay loading -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-spinner"></div>
+        <div class="loading-text">جاري تحميل الفيديو...</div>
+    </div>
+
+    <!-- Conteneur vidéo principal -->
+    <div class="video-container" id="videoContainer">
+        <video id="introVideo" class="intro-video" poster="assets/videos/poster.jpg" preload="auto" playsinline muted>
+            <source src="assets/videos/intro.mp4" type="video/mp4">
+            <source src="assets/videos/intro.webm" type="video/webm">
+            <div class="video-fallback">
+                <p>متصفحك لا يدعم تشغيل الفيديو</p>
+                <button onclick="skipVideo()">متابعة للتطبيق</button>
+            </div>
+        </video>
+        
+        <!-- Overlay UI -->
+        <div class="video-ui" id="videoUI">
+            <div class="branding-overlay">
+                <img src="assets/images/mascotte.svg" alt="Lumi" class="brand-logo">
+                <h2>أنا أبدع في مدرستي</h2>
+            </div>
+            
+            <div class="video-controls">
+                <button class="control-btn sound-btn" id="soundBtn" onclick="toggleSound()">
+                    🔇
+                </button>
+                <button class="control-btn skip-btn" onclick="skipVideo()">
+                    ⏭️ تخطي
+                </button>
+            </div>
+            
+            <div class="progress-bar-container">
+                <div class="progress-bar" id="progressBar"></div>
+            </div>
+            
+            <div class="video-timer">
+                <span id="currentTime">0:00</span>
+                <span id="duration">0:00</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/utils.js"></script>
+    <script src="js/video-controller.js"></script>
+</body>
+</html>
