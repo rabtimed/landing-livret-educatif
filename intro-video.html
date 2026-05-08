@@ -16,7 +16,8 @@
 
     <!-- Conteneur vidéo principal -->
     <div class="video-container" id="videoContainer">
-        <video id="introVideo" class="intro-video" poster="assets/videos/poster.jpg" preload="auto" playsinline muted>
+        <!-- muted retiré, et on ajoute autoplay playsinline -->
+        <video id="introVideo" class="intro-video" poster="assets/videos/poster.jpg" preload="auto" playsinline autoplay>
             <source src="assets/videos/intro.mp4" type="video/mp4">
             <source src="assets/videos/intro.webm" type="video/webm">
             <div class="video-fallback">
@@ -32,13 +33,12 @@
                 <h2>أنا أبدع في مدرستي</h2>
             </div>
             
-            <div class="video-controls">
-                <button class="control-btn sound-btn" id="soundBtn" onclick="toggleSound()">
-                    🔇
-                </button>
-                <button class="control-btn skip-btn" onclick="skipVideo()">
-                    ⏭️ تخطي
-                </button>
+            <!-- Contrôles repositionnés : bouton "تخطي" en haut à gauche, bouton son en bas à droite (par exemple) -->
+            <div class="video-controls-top">
+                <button class="control-btn skip-btn" onclick="skipVideo()">⏭️ تخطي</button>
+            </div>
+            <div class="video-controls-bottom">
+                <button class="control-btn sound-btn" id="soundBtn" onclick="toggleSound()">🔊</button>
             </div>
             
             <div class="progress-bar-container">

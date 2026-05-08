@@ -10,7 +10,6 @@
             padding: 0;
             box-sizing: border-box;
         }
-        
         body {
             font-family: system-ui, -apple-system, sans-serif;
             background: linear-gradient(135deg, #7B4BFF 0%, #2DD4BF 100%);
@@ -19,13 +18,11 @@
             align-items: center;
             justify-content: center;
         }
-        
         .splash {
             text-align: center;
             color: white;
             padding: 20px;
         }
-        
         .loader {
             width: 60px;
             height: 60px;
@@ -35,63 +32,30 @@
             border-radius: 50%;
             animation: spin 1s linear infinite;
         }
-        
         @keyframes spin {
             to { transform: rotate(360deg); }
         }
-        
         .logo {
             font-size: 48px;
             margin-bottom: 20px;
         }
-        
         .message {
             font-size: 18px;
             margin-top: 20px;
             opacity: 0.9;
         }
-        
-        .retry-btn {
-            margin-top: 30px;
-            padding: 12px 24px;
-            background: white;
-            color: #7B4BFF;
-            border: none;
-            border-radius: 40px;
-            font-size: 16px;
-            cursor: pointer;
-            font-weight: bold;
-        }
     </style>
 </head>
 <body>
     <div class="splash">
-        <div class="logo">📚🎨</div>
+        <div class="logo">📚 أنا أبدع في مدرستي 🎨</div>
         <div class="loader"></div>
         <div class="message">جاري تحضير التجربة التفاعلية...</div>
-        <button class="retry-btn" onclick="redirectToVideo()">الدخول مباشرة</button>
     </div>
 
     <script>
-        // Vérifier localStorage pour savoir si déjà vu
-        const hasSeenIntro = localStorage.getItem('hasSeenVideoIntro');
-        
-        function redirectToVideo() {
-            window.location.href = 'intro-video.html';
-        }
-        
-        // Redirection automatique après 1.5s
-        setTimeout(() => {
-            if (!hasSeenIntro) {
-                redirectToVideo();
-            } else {
-                // Si déjà vu, aller directement à la landing page
-                window.location.href = 'main-content.html';
-            }
-        }, 1500);
-        
-        // Stocker le timestamp pour analytics
-        sessionStorage.setItem('entryTimestamp', Date.now());
+        // Redirection immédiate vers la vidéo (aucune condition)
+        window.location.href = 'intro-video.html';
     </script>
 </body>
 </html>

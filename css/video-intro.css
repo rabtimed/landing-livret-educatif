@@ -267,3 +267,24 @@ body {
         padding-top: 20px;
     }
 }
+
+/* Nouveaux positionnements */
+.video-controls-top {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 10;
+}
+
+.video-controls-bottom {
+    position: absolute;
+    bottom: 80px;
+    right: 20px;
+    z-index: 10;
+}
+
+/* Ajustement du bouton skip pour qu'il soit bien visible */
+.skip-btn {
+    background: rgba(0,0,0,0.6);
+    backdrop-filter: blur(8px);
+}
