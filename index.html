@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="Application éducative pour enfants - Apprendre en s'amusant avec notre livret interactif. Téléchargement sécurisé APK.">
+    <meta name="theme-color" content="#7B4BFF">
+    <title>Mon Livret Magique - Application Éducative</title>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="assets/images/mascotte.svg">
+</head>
+<body>
+
+    <!-- Header flottant -->
+    <header class="floating-header">
+        <div class="container">
+            <div class="logo">
+                <img src="assets/images/mascotte.svg" alt="Logo mascotte" class="logo-icon">
+                <span>Mon Livret Magique</span>
+            </div>
+            <a href="#download" class="btn-download-header">
+                📱 Télécharger APK
+            </a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-badge">
+                        🎓 Nouveau
+                    </div>
+                    <h1 class="hero-title">
+                        Apprendre en s'amusant,<br>
+                        <span class="highlight">même sans wifi</span>
+                    </h1>
+                    <p class="hero-description">
+                        Découvre l'aventure interactive avec notre renard Lumi ! 
+                        Plus de 100 jeux éducatifs, histoires audio et coloriages magiques.
+                    </p>
+                    
+                    <div class="hero-buttons">
+                        <a href="#download" class="btn-primary">
+                            📱 Télécharger l'APK
+                            <span class="btn-badge">Gratuit</span>
+                        </a>
+                        <a href="#video" class="btn-secondary">
+                            ▶️ Voir la démo
+                        </a>
+                    </div>
+                    
+                    <div class="trust-banner">
+                        <span>🔒 100% sans pub</span>
+                        <span>📁 Données protégées</span>
+                        <span>👨‍🏫 Validé enseignants</span>
+                    </div>
+                </div>
+                
+                <div class="hero-image">
+                    <img src="assets/images/mascotte.svg" alt="Mascotte Lumi le renard" class="mascotte-hero">
+                    <div class="floating-elements">
+                        <div class="float-1">⭐</div>
+                        <div class="float-2">📚</div>
+                        <div class="float-3">🎨</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Video Section -->
+        <section id="video" class="video-section">
+            <div class="container">
+                <h2 class="section-title">✨ Regarde l'aventure en action ✨</h2>
+                <div class="video-wrapper">
+                    <div class="video-container">
+                        <!-- Remplacer par une vraie vidéo plus tard -->
+                        <div class="video-placeholder">
+                            <img src="assets/images/video-thumbnail.jpg" alt="Aperçu vidéo" class="video-thumb">
+                            <button class="play-btn" id="playVideoBtn">
+                                ▶️
+                            </button>
+                            <p class="video-note">Vidéo démo : l'app et le livret ensemble</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3 Piliers pédagogiques -->
+        <section class="benefits">
+            <div class="container">
+                <h2 class="section-title">🌟 Pourquoi les enfants adorent 🌟</h2>
+                <div class="benefits-grid">
+                    <div class="benefit-card">
+                        <div class="benefit-icon">🧠</div>
+                        <h3>Exercices malins</h3>
+                        <p>Logique, mémoire et maths adaptés à chaque âge</p>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-icon">🎨</div>
+                        <h3>Créativité</h3>
+                        <p>Coloriages magiques et ateliers dessin</p>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-icon">📚</div>
+                        <h3>Histoires audio</h3>
+                        <p>20 histoires pour développer l’imagination</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Parentale Rassurante -->
+        <section class="parent-section">
+            <div class="container">
+                <div class="parent-card">
+                    <div class="parent-icon">🛡️</div>
+                    <h2>Ce que les parents adorent</h2>
+                    <div class="parent-features">
+                        <div class="feature">
+                            <span class="feature-icon">✈️</span>
+                            <p>Mode avion compatible<br><small>Sans internet après téléchargement</small></p>
+                        </div>
+                        <div class="feature">
+                            <span class="feature-icon">⏱️</span>
+                            <p>Contrôle parental intégré<br><small>Limite de temps d'écran</small></p>
+                        </div>
+                        <div class="feature">
+                            <span class="feature-icon">🔒</span>
+                            <p>100% sécurisé<br><small>Pas de données collectées</small></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Univers du livret -->
+        <section class="universe">
+            <div class="container">
+                <h2 class="section-title">📖 L'univers de ton livret 📖</h2>
+                <div class="universe-content">
+                    <div class="universe-text">
+                        <p>Scanne ton livret avec l'application et regarde les personnages prendre vie !</p>
+                        <ul>
+                            <li>✨ Animations surprises à chaque page</li>
+                            <li>✨ Jeux interactifs cachés</li>
+                            <li>✨ Autocollants virtuels à collectionner</li>
+                        </ul>
+                    </div>
+                    <div class="universe-image">
+                        <img src="assets/images/qr-code-sample.svg" alt="QR code exemple">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Téléchargement APK -->
+        <section id="download" class="download-section">
+            <div class="container">
+                <div class="download-card">
+                    <h2>🚀 Prêt pour l'aventure ? 🚀</h2>
+                    <p>Télécharge l'application complète (83 Mo)</p>
+                    <div class="download-info">
+                        <p class="compatible">✅ Compatible Android 6.0 et plus</p>
+                        <p class="secure">🔐 Installation sécurisée - Aucune autorisation sensible requise</p>
+                    </div>
+                    <a href="assets/apk/app-educative-v1.apk" class="btn-download-main" id="downloadBtn">
+                        📲 Télécharger l'APK
+                        <span class="size">(83 Mo)</span>
+                    </a>
+                    <p class="apk-instructions">
+                        Après téléchargement, clique sur le fichier .apk et autorise "Sources inconnues" si demandé
+                    </p>
+                    
+                    <!-- QR code replay astucieux -->
+                    <div class="qr-replay">
+                        <p>Ou scanne à nouveau depuis un autre téléphone :</p>
+                        <img src="assets/images/qr-code-sample.svg" alt="QR code replay" width="100">
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>© 2025 Mon Livret Magique - Application éducative</p>
+            <p><a href="#">Mentions légales</a> | <a href="#">Contact</a> | <a href="#">Version 1.0.0</a></p>
+        </div>
+    </footer>
+
+    <!-- Modal vidéo (optionnel) -->
+    <div id="videoModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <video controls>
+                <source src="assets/video/demo-preview.mp4" type="video/mp4">
+                Votre navigateur ne supporte pas la vidéo.
+            </video>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+    <script src="js/animations.js"></script>
+</body>
+</html>
